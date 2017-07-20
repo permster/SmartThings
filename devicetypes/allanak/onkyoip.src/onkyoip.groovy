@@ -138,6 +138,7 @@ def setLevel(vol){
 	else {
 		sendEvent(name:"setLevel", value: vol)
 		String volhex = vol.bytes.encodeHex()
+        volhex = volhex.toUpperCase()
 		// Strip the first six zeroes of the hex encoded value because we send volume as 2 digit hex
 		volhex = volhex.replaceFirst("\\u0030{6}","")
 		log.debug "Converted volume $vol into hex: $volhex"
